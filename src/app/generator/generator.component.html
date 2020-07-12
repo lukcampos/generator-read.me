@@ -1,0 +1,219 @@
+<section id="projectTitle">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="./assets/svg/undraw_font_kwpk.svg" id="projectTitle_image" alt="">
+      </div>
+      <div class="col-md-8">
+        <h2>What is the name of your project?</h2>
+        <form class="form-container" [formGroup]="readmeForm">
+          <mat-form-field class="full-width">
+            <mat-label>Project Title</mat-label>
+            <input matInput formControlName="projectTitle" placeholder="My awesome project! ❤️">
+          </mat-form-field>
+          <div class="button-row">
+            <button mat-raised-button color="primary" (click)="next(1,'projectDescription')">Next </button>
+
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section id="projectDescription" class="dark" [ngClass]="step < 2 ? 'disabled':'enabled'">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-8">
+        <h2>Tell us a brief description of your project</h2>
+        <form class="form-container" [formGroup]="readmeForm">
+          <mat-form-field class="full-width">
+            <mat-label>Project Title</mat-label>
+            <textarea matInput formControlName="projectDescription"> </textarea>
+          </mat-form-field>
+          <div class="button-row">
+            <button mat-raised-button color="primary" (click)="next(2,'projectPrerequisites')">Next</button>
+            <button mat-raised-button class="blackText" (click)="next(2,'projectPrerequisites')">skip description</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <img src="./assets/svg/undraw_placeholders_rklh.svg" id="projectTitle_image" alt="">
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="projectPrerequisites" [ngClass]="step < 3 ? 'disabled':'enabled'">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4">
+        <img src="./assets/svg/undraw_wishlist_jk8a.svg" id="projectPrerequisites_image" alt="">
+      </div>
+
+
+      <div class="col-md-8" [formGroup]="readmeForm">
+        <h2>Does your project have any prerequisites?</h2>
+
+
+
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let listItem of prerequisitesForm.value;let i = index;trackBy:trackBID">
+            <mat-checkbox [checked]="listItem.enabled" [value]="listItem" (change)="updatePrerequisite(i,$event)">{{listItem.title}}</mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+
+        <div class="row">
+
+          <div class="col-md-10">
+            <form class="form-container" [formGroup]="readmeForm">
+              <mat-form-field class="full-width">
+                <mat-label>Add a custom prerequisite</mat-label>
+                <input matInput #customPR placeholder="My custom prerequisite! 😗  " (keyup.enter)="addPrerequisite(customPR)">
+              </mat-form-field>
+
+            </form>
+          </div>
+          <div class="col-md-2">
+            <button (click)="addPrerequisite(customPR)" mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="button-row form-container">
+          <button mat-raised-button color="primary" (click)="next(3,'projectInstalation')">Next</button>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+<section id="projectInstalation" [ngClass]="step < 4 ? 'disabled':'enabled'">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-8">
+
+        <h2>Installation time!</h2>
+
+        <form class="form-container" [formGroup]="readmeForm">
+          <mat-form-field class="full-width">
+            <mat-label>Instalation Title</mat-label>
+            <textarea matInput formControlName="instalationTitle"> </textarea>
+          </mat-form-field>
+
+        </form>
+
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let listItem of instlalationStepsForm.value;let i = index;trackBy:trackBID">
+            {{listItem}} <button (click)="deleteInstalationStep(i)" mat-icon-button aria-label="Example icon-button with a heart icon">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+
+      </div>
+
+
+      <div class="col-md-4">
+        <img src="./assets/svg/undraw_dev_productivity_umsq.svg" id="projectTitle_image" alt="">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 form-container">
+
+
+        <div class="row">
+          <div class="col-md-10">
+            <form class="form-container" [formGroup]="readmeForm">
+              <mat-form-field class="full-width">
+                <mat-label>Add instalation step</mat-label>
+                <input matInput #instalatinStep placeholder="Ex: npm install" (keyup.enter)="addInstalatonStep(instalatinStep)">
+
+              </mat-form-field>
+
+            </form>
+          </div>
+          <div class="col-md-2">
+            <button (click)="addInstalatonStep(instalatinStep)" mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button mat-raised-button color="primary" (click)="next(4,'projectAuthor')">Next</button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="projectAuthor" class="dark" [ngClass]="step < 5 ? 'disabled':'enabled'">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="./assets/svg/undraw_my_app_grf2.svg" id="projectTitle_image" alt="">
+      </div>
+
+      <div class="col-md-8">
+
+        <h2>Who is the author of this project?</h2>
+
+        <form class="form-container" [formGroup]="readmeForm">
+          <mat-form-field class="full-width">
+            <mat-label>Author</mat-label>
+            <textarea matInput formControlName="author"> </textarea>
+          </mat-form-field>
+
+        </form>
+
+
+
+      </div>
+
+
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-4 form-container">
+        <div class="button-row">
+          <button mat-raised-button color="primary" (click)="next(5,'final')">Next</button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="final" [ngClass]="step < 6 ? 'disabled':'enabled'">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [postRender]="postRenderFunc" [(ngModel)]="content" [height]="'700px'" [mode]="mode" (onEditorLoaded)="onEditorLoaded($event)"
+            (onPreviewDomChanged)="onPreviewDomChanged($event)" required>
+        </md-editor>
+      </div>
+    </div>
+  </div>
+</section>
