@@ -11,7 +11,7 @@ export class ReadFileService {
   ) { }
 
   async read(fileName: string) {
-    return this.http.get(`http://localhost:4200/assets/templates/${fileName}`, {
+    return this.http.get(`/assets/templates/${fileName}`, {
       responseType: 'text'
     }).toPromise()
   }

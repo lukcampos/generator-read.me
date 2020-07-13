@@ -3,14 +3,39 @@
 
 <head>
   <meta charset="utf-8">
-  <title>GeneratorReadMe</title>
+  <title>README Generator</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta charset="UTF-8" />
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+  <meta property="og:title" content="README Generator">
+  <meta property="og:url" content="https://generator-read.me/">
+  <meta property="og:image" content="https://generator-read.me/assets/img/og_image.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+
+
+
+  <link rel="apple-touch-icon" sizes="57x57" href="assets/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -25,18 +50,37 @@
 
         <div class="col-md-12">
           <h1>
-            We know that it is boring to create a <span class="hl">README.MD</span> file,
+            We know that's boring to create a <span class="hl">README.MD</span> file,
             so let's be quick
           </h1>
           <p>
             we will help you automate the creation of a beautiful README.MD file</p>
+
+          <div class="arrow bounce" id="arrow" onclick="scrollTo()">
+            <a class="fa fa-arrow-down fa-2x" href="#"></a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <app-root></app-root>
+  <app-root id="app-root>"></app-root>
 
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+
+  <script type="text/javascript">
+    function scrollTo(element) {
+      window.scroll({
+        behavior: 'smooth',
+        left: 0,
+        top: element.offsetTop
+      });
+    }
+
+    document.getElementById("arrow").addEventListener('click', () => {
+      scrollTo(document.getElementById("projectTitle"));
+    });
+  </script>
 </body>
 
 </html>
